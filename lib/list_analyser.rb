@@ -13,13 +13,25 @@ class ListAnalyser
   end
 
   def run
-    list_by_visits.each do |page, visits|
+    sort(list_by_visit).each do |page, visits|
       print "#{page} #{visits} #{visits == 1 ? 'visit' : 'visits'} "
+    end
+    print "\n"
+    sort(list_by_unique_visits).each do |page, visits|
+      print "#{page} #{visits} unique #{visits == 1 ? 'visit' : 'visits'} "
     end
     print "\n"
   end
 
-  def list_by_visits
+  def sort(list)
     Hash[list.sort_by { |_, visits| -visits }]
+  end
+
+  def list_by_visit
+    list.transform_values(&:count)
+  end
+
+  def list_by_unique_visits
+    list.transform_values { |addresses| addresses.uniq.count }
   end
 end

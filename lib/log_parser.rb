@@ -18,11 +18,11 @@ class LogParser
 
   def read
     File.open(filepath).each_with_index do |line, i|
-      key, value = line.split(' ')
-      raise BadFileFormattingError.new(filepath, i, line) unless key && value
+      page, address = line.split(' ')
+      raise BadFileFormattingError.new(filepath, i, line) unless page && address
 
-      list[key] ||= 0
-      list[key] += 1
+      list[page] ||= []
+      list[page] << address
     end
     list
   end
