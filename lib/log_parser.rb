@@ -23,8 +23,7 @@ class LogParser
     end
 
     read_file
-    # order_list_by_visits
-    # print_results
+    print_results
   end
 
   def read_file
@@ -40,9 +39,18 @@ class LogParser
     end
   end
 
-  # def order_list_by_visits
-  # end
+  def order_list_by_visits
+    @list = Hash[list.sort_by { |_, visits| -visits }]
+  end
 
-  # def print_results
-  # end
+  def list_by_visits
+    order_list_by_visits
+  end
+
+  def print_results
+    list_by_visits.each do |page, visits|
+      print "#{page} #{visits} #{visits == 1 ? 'visit' : 'visits'} "
+    end
+    print "\n"
+  end
 end

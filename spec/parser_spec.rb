@@ -23,8 +23,18 @@ RSpec.describe LogParser, '#run' do
         parser = LogParser.new('./spec/dummy/example.log')
         parser.run
         expect(parser.list.length).to eq(4)
-        expect(parser.list.keys).to eq(%w[/contact /help_page/1 /home /about/2])
+        %w[/contact /help_page/1 /home /about/2].each do |page|
+          expect(parser.list.keys).to include(page)
+        end
       end
+    end
+  end
+
+  context 'with a valid input' do
+    it 'ranks the pages list by visits' do
+      parser = LogParser.new('./spec/dummy/example.log')
+      expect { parser.run }.to output('/help_page/1 2 visits /contact 1 visit '\
+        '/home 1 visit /about/2 1 visit ' + "\n").to_stdout
     end
   end
 end
