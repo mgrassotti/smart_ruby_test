@@ -6,25 +6,43 @@
 # ordered from most pages views to less page views
 # a list of webpages with most unique page views also ordered
 class LogParser
+  class FileNotFoundError < StandardError; end
+  class BadFileFormattingError < StandardError; end
   attr_reader :filepath
+  attr_accessor :list
 
   def initialize(path)
     @filepath = path
-  end
-
-  def print_path_not_found
-    puts 'Input file not found at path ' + "'#{filepath}'"
-    puts 'Please, check it and retry'
+    @list = {}
   end
 
   def run
     unless FileTest.exists?(filepath)
-      print_path_not_found
-      return
+      raise FileNotFoundError, "Input file not found at path '#{filepath}'. "\
+        'Please, check it and retry'
     end
 
-    File.open(filepath).each do |line|
-      puts line
+    read_file
+    # order_list_by_visits
+    # print_results
+  end
+
+  def read_file
+    File.open(filepath).each_with_index do |row, i|
+      key, value = row.split(' ')
+      unless key && value
+        raise BadFileFormattingError, "Input file '#{filepath}' is not properly "\
+          "formatted at line ##{i}: 'Page ip_address' expected, got #{row}. "\
+          'Please, check it and retry'
+      end
+      list[key] ||= 0
+      list[key] += 1
     end
   end
+
+  # def order_list_by_visits
+  # end
+
+  # def print_results
+  # end
 end
