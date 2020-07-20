@@ -1,6 +1,5 @@
-# frozen_string_literal: true
+#!/usr/bin/env ruby
 
-# !/usr/bin/env ruby
 require_relative 'lib/log_parser'
 
 parsed_list = LogParser.new(ARGV.first).read
