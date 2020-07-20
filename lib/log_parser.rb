@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'log_parser/errors'
+require_relative 'log_parser/errors'
 
 # Initialized with a log file path,
 # #read returns a list of webpages with associated views,
