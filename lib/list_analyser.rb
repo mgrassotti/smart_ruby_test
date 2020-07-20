@@ -1,37 +1,27 @@
 # frozen_string_literal: true
 
-# To be initialized with a websites parsed list (hash),
-# #run returns:
-# a list of webpages with most page views,
-# ordered from most pages views to less page views
-# a list of webpages with most unique page views also ordered
+require_relative 'visits_list'
+
+# #run prints a list of webpages with most page views
+# and a list of webpages with most unique page views.
+# To be initialized with a websites parsed list (hash).
 class ListAnalyser
   attr_reader :list
 
-  def initialize(list)
-    @list = list
+  def initialize(list_hash)
+    @list = VisitsList.new list_hash
   end
 
   def run
-    sort(list_by_visit).each do |page, visits|
-      print "#{page} #{visits} #{visits == 1 ? 'visit' : 'visits'} "
+    print_results list.by_visits.sort
+    print_results list.by_unique_visits.sort, unique: true
+  end
+
+  def print_results(results, unique: false)
+    results.each do |page, visits|
+      print "#{page} #{visits} #{'unique ' if unique}"\
+        "#{visits == 1 ? 'visit' : 'visits'} "
     end
     print "\n"
-    sort(list_by_unique_visits).each do |page, visits|
-      print "#{page} #{visits} unique #{visits == 1 ? 'visit' : 'visits'} "
-    end
-    print "\n"
-  end
-
-  def sort(list)
-    Hash[list.sort_by { |_, visits| -visits }]
-  end
-
-  def list_by_visit
-    list.transform_values(&:count)
-  end
-
-  def list_by_unique_visits
-    list.transform_values { |addresses| addresses.uniq.count }
   end
 end
