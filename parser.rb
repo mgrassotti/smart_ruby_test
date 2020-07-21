@@ -8,8 +8,9 @@ class Parser
   # An error is raised if
   # an input file argument is not provided
   class MissingArgumentError < StandardError
-    def message
-      'Argument not provided: \'./parse.rb <logfile_path>\' expected. Please provide an input file path and retry.'
+    def initialize
+      super 'Argument not provided: \'./parse.rb <logfile_path>\' expected. '\
+        'Please provide an input file path and retry.'
     end
   end
 

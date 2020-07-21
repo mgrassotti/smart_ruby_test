@@ -6,6 +6,8 @@ In order to launch the script, you need `ruby` to be installed on your machine. 
 
 For the exact ruby version, please check the `.ruby-version` file.
 
+OPTIONAL: you can install the `simplecov` gem to produce a code coverage report while running the test suite.
+
 ## Launch the script
 After downloading the repository to your machine, run this command inside the code directory:
 ```
