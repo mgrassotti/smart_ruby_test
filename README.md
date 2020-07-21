@@ -1,5 +1,5 @@
 # Ruby scripting test
-This repository was made to reply to the "Smart" ruby test, about parsing a web visits log file.
+This repository was made to reply to the "Smart" ruby test, that can be found [here](https://github.com/mgrassotti/smart_ruby_test/blob/master/docs/smart_ruby_test.pdf).
 
 ## Requirements
 In order to launch the script, you need `ruby` to be installed on your machine. Please check out the installation instructions here https://www.ruby-lang.org/en/documentation/installation/.
