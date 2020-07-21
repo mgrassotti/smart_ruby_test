@@ -3,8 +3,15 @@
 require 'log_parser'
 
 RSpec.describe LogParser do
+  context 'when the argument is not provided' do
+    it 'raises an error on initialization' do
+      expect { LogParser.new(nil) }.to(
+        raise_error(LogParser::MissingArgumentError)
+      )
+    end
+  end
   context 'when the input file does not exist' do
-    it 'raise an error on initialization' do
+    it 'raises an error on initialization' do
       expect { LogParser.new('/unexisting_file_path') }.to(
         raise_error(LogParser::FileNotFoundError)
       )

@@ -12,12 +12,20 @@ class LogParser
         'Please, check it and retry'
     end
   end
-  # An error is raised if a file is not found
-  # at the provided path
+  # An error is raised if
+  # a file is not found at the provided path
   class FileNotFoundError < StandardError
     def initialize(path)
       super "Input file not found at path '#{path}'. "\
         'Please, check it and retry'
+    end
+  end
+
+  # An error is raised if
+  # an input file argument is not provided
+  class MissingArgumentError < StandardError
+    def message
+      'Argument not provided: \'./parse.rb <logfile_path>\' expected. Please provide an input file path and retry.'
     end
   end
 end
