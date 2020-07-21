@@ -2,9 +2,9 @@
 This repository was made to reply to the "Smart" ruby test, about parsing a web visits log file.
 
 ## Requirements
-In order to launch the script, you need `ruby` to be installed on your machine.
+In order to launch the script, you need `ruby` to be installed on your machine. Please check out the installation instructions here https://www.ruby-lang.org/en/documentation/installation/.
 
-Please check out the installation instructions here https://www.ruby-lang.org/en/documentation/installation/
+For the exact ruby version, please check the `.ruby-version` file.
 
 ## Launch the script
 After downloading the repository to your machine, simply run this command inside the code directory:
