@@ -14,7 +14,7 @@ class LogParser
     raise FileNotFoundError, path unless FileTest.exists?(path)
 
     @filepath = path
-    @list = {}
+    @list = VisitsList.new
   end
 
   def read
@@ -22,8 +22,7 @@ class LogParser
       page, address = line.split(' ')
       raise BadFileFormattingError.new(filepath, i, line) unless page && address
 
-      list[page] ||= []
-      list[page] << address
+      list.add page, address
     end
     list
   end

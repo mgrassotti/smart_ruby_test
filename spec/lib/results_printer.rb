@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'log_parser'
-require 'list_analyser'
+require 'results_printer'
 
-RSpec.describe ListAnalyser, '#run' do
+RSpec.describe ResultsPrinter, '#run' do
   it 'ranks the pages list by visits' do
     list = LogParser.new('./spec/dummy/example.log').read
     expect { ListAnalyser.new(list).run }.to output(
