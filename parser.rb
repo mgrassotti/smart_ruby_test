@@ -5,7 +5,17 @@ require_relative 'lib/results_printer'
 
 # Main application class
 class Parser
-  def self.run(args)
+  # An error is raised if
+  # an input file argument is not provided
+  class MissingArgumentError < StandardError
+    def message
+      'Argument not provided: \'./parse.rb <logfile_path>\' expected. Please provide an input file path and retry.'
+    end
+  end
+
+  def self.run(args = [])
+    raise MissingArgumentError unless args.any?
+
     list = LogParser.new(args.first).read
     ResultsPrinter.new(list).run
   end

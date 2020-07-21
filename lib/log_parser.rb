@@ -10,7 +10,6 @@ class LogParser
   attr_reader :filepath, :list
 
   def initialize(path)
-    raise MissingArgumentError if path.to_s.strip.empty?
     raise FileNotFoundError, path unless FileTest.exists?(path)
 
     @filepath = path
