@@ -7,7 +7,7 @@ In order to launch the script, you need `ruby` to be installed on your machine. 
 For the exact ruby version, please check the `.ruby-version` file.
 
 ## Launch the script
-After downloading the repository to your machine, simply run this command inside the code directory:
+After downloading the repository to your machine, run this command inside the code directory:
 ```
 $ ./parse.rb <log_file_name>
 ```
@@ -16,7 +16,7 @@ To see the example output, you can run:
 $ ./parse.rb webserver.log
 ```
 
-## Running Tests
+## Running tests
 In order to run the test suite, you need to install `rspec`.
 
 If you didn't installed it before:
