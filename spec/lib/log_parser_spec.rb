@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'log_parser'
-
 RSpec.describe LogParser do
   context 'when the argument is not provided' do
     it 'raises an error on initialization' do

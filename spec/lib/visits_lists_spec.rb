@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'log_parser'
-require 'visits_list'
-
 RSpec.describe VisitsList do
   let(:list) do
     LogParser.new('./spec/dummy/example_unique_visits.log').read
